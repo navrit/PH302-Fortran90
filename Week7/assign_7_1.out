@@ -1,0 +1,49 @@
+ +--------------------------+
+ |  BEGINNING TEST PROGRAM  |
+ +--------------------------+
+ +--------------------------+
+ |  TEST NUMBER           1 |
+ +--------------------------+
+ Calling your subroutine to solve the equation:
+ 0 = (2.0)x^2 + (-5.5)x + (-1.5)
+ ie: A = 2.0  B = -5.5  C = -1.5
+ Attempting to call your subroutine...
+ ...Back out of your subroutine. It returned the following values for number of solutions, xplus and xminus:
+           2   3.000000     -0.2500000    
+ Your subroutine claims there are two solutions, which is correct
+ Your subroutine found the first solution for x to be    3.000000     , which is correct
+ Your subroutine found the second solution for x to be  -0.2500000     , which is correct
+ +--------------------------+
+ |         SUCCESS!         |
+ +--------------------------+
+ +--------------------------+
+ |  TEST NUMBER           2 |
+ +--------------------------+
+ Calling your subroutine to solve the equation:
+ 0 = (4.0)x^2 + (16.0)x + (16.0)
+ ie: A = 4.0  B = 16.0  C = 16.0
+ Attempting to call your subroutine...
+ ...Back out of your subroutine. It returned the following values for number of solutions, xplus and xminus:
+           1  -2.000000       0.000000    
+ Your subroutine claims there is one solution, which is correct
+ Your subroutine found the solution for x to be   -2.000000     , which is correct
+ +--------------------------+
+ |         SUCCESS!         |
+ +--------------------------+
+ +--------------------------+
+ |  TEST NUMBER           3 |
+ +--------------------------+
+ Calling your subroutine to solve the equation:
+ 0 = (3.0)x^2 + (5.0)x + (12.0)
+ ie: A = 3.0  B = 5.0  C = 12.0
+ Attempting to call your subroutine...
+ ...Back out of your subroutine. It returned the following values for number of solutions, xplus and xminus:
+           0   0.000000       0.000000    
+ Your subroutine claims there are no solutions, which is correct
+ +--------------------------+
+ |         SUCCESS!         |
+ +--------------------------+
+ +--------------------------+
+ |       END OF TESTS       |
+ +--------------------------+
+ Congratulations, all tests appear to have completed correctly

@@ -1,0 +1,13 @@
+1. INTENT(OUT)
+	eg. {variable type}, INTENT(OUT) :: {variable name}
+
+2. Functions have a return type, they must return a variable of a predefined type. 
+    Sub-routines are called by using the CALL command, functions are referred to by just 
+    their name.
+	eg. CALL {subroutine(...parameters...)}
+		or
+	    {function(...parameters...)}
+
+3. Using functions and sub-routines can reduce the repetitiveness of the program by re-using
+    code. They can also greatly simplify understanding and the readability of the program to
+    programmers, which can also help with debugging.

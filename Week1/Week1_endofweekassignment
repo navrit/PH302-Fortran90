@@ -1,0 +1,9 @@
+1. mkdir mydirectory
+2. mv myfile mydirectory/
+3. cd mydirectory --- cd ../
+4. No longer a real number - imaginary because of the square root of a negative number 
+5. a) INTEGER - Fits within the data limits (~2 Billion) and ages are usually givenas whole numbers
+   b) INTEGER - Fits within the data limits (~2 Billion) and could handle years, months and days and is given in whole numbers usually
+   c) DOUBLE PRECISION - Highest level of precision available by default
+   d) CHARACTER - The only data type that can store such data
+   e) COMPLEX - The only data type that can store such data

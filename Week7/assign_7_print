@@ -1,0 +1,215 @@
+----------------------------ASSIGN_7_1-----------------------------------
+
+!************************************************************************
+!Author: Navrit Bal
+!Student Number:12958319
+!Creation Date:14/02/2013
+!Assignment Number:
+!Purpose: To interact with object code from 'week7prog.o', taking and 
+!		   passing back various parameters with the aim of solving a 
+!		   quadratic equation
+!************************************************************************
+
+SUBROUTINE sevensub (a,b,c,x_sol,x_plus,x_min)
+	IMPLICIT NONE
+	
+	! a, b and c take their values from 'week7prog.o' 
+	REAL, INTENT(IN) :: a,b,c
+	! x_plus and x_min send their values back to 'week7prog.o'
+	REAL, INTENT(OUT) :: x_plus,x_min
+	! x_sol - number of x solutions sends its value back to 'week7prog.o'
+	INTEGER, INTENT(OUT) :: x_sol
+	! dis -  discriminant - b**2 - 4*a*c
+	REAL :: dis
+
+	!Initial conditions
+	x_plus = 0.0
+	x_min = 0.0
+	x_sol = 0
+	dis = 0.0
+	
+	dis = (b**2 - 4*a*c) !Calculate the discriminant
+	
+	!Calculates as appropriate, the positive and negative x solution 
+	! to the quadratic equation and number of x solutions
+	IF (dis > 0.0) THEN
+		WRITE(*,*) 'There are 2 solutions to the quadratic equation'
+		x_plus = ((-b + SQRT(dis))/(2*a))
+		x_min = ((-b - SQRT(dis))/(2*a))
+		x_sol = 2
+	ELSEIF (dis == 0.0) THEN
+		x_plus = ((-b)/(2*a))
+		x_sol = 1
+	ELSEIF (dis < 0.0) THEN
+		WRITE (*,*)  'Based on the coefficients entered there are&
+						&no real solutions'
+		x_sol = 0
+	ENDIF	
+	
+END SUBROUTINE sevensub
+
+----------------------------ASSIGN_7_1.OUT-------------------------------
+
+ +--------------------------+
+ |  BEGINNING TEST PROGRAM  |
+ +--------------------------+
+ +--------------------------+
+ |  TEST NUMBER           1 |
+ +--------------------------+
+ Calling your subroutine to solve the equation:
+ 0 = (2.0)x^2 + (-5.5)x + (-1.5)
+ ie: A = 2.0  B = -5.5  C = -1.5
+ Attempting to call your subroutine...
+ ...Back out of your subroutine. It returned the following values for 
+ number of solutions, xplus and xminus:
+           2   3.000000     -0.2500000    
+ Your subroutine claims there are two solutions, which is correct
+ Your subroutine found the first solution for x to be    3.000000     
+ , which is correct
+ Your subroutine found the second solution for x to be  -0.2500000     
+ , which is correct
+ +--------------------------+
+ |         SUCCESS!         |
+ +--------------------------+
+ +--------------------------+
+ |  TEST NUMBER           2 |
+ +--------------------------+
+ Calling your subroutine to solve the equation:
+ 0 = (4.0)x^2 + (16.0)x + (16.0)
+ ie: A = 4.0  B = 16.0  C = 16.0
+ Attempting to call your subroutine...
+ ...Back out of your subroutine. It returned the following values for 
+ number of solutions, xplus and xminus:
+           1  -2.000000       0.000000    
+ Your subroutine claims there is one solution, which is correct
+ Your subroutine found the solution for x to be   -2.000000     , 
+ which is correct
+ +--------------------------+
+ |         SUCCESS!         |
+ +--------------------------+
+ +--------------------------+
+ |  TEST NUMBER           3 |
+ +--------------------------+
+ Calling your subroutine to solve the equation:
+ 0 = (3.0)x^2 + (5.0)x + (12.0)
+ ie: A = 3.0  B = 5.0  C = 12.0
+ Attempting to call your subroutine...
+ ...Back out of your subroutine. It returned the following values for 
+	number of solutions, xplus and xminus:
+           0   0.000000       0.000000    
+ Your subroutine claims there are no solutions, which is correct
+ +--------------------------+
+ |         SUCCESS!         |
+ +--------------------------+
+ +--------------------------+
+ |       END OF TESTS       |
+ +--------------------------+
+ Congratulations, all tests appear to have completed correctly
+
+ ----------------------------ASSIGN_7_2_MAIN-----------------------------
+ 
+ !***********************************************************************
+!Author: Navrit Bal
+!Student Number: 12958319
+!Creation Date: 21/02/2013
+!Assignment Number: 7_2
+!Purpose: Calculate and print various qunatities using functions
+!************************************************************************
+
+PROGRAM assign_7_2
+	IMPLICIT NONE
+	
+	! Declares all the variables and functions
+	REAL :: r, circ_area, circ_perim, sphere_area,&
+			&sphere_volume, pi
+	
+	! Define PI
+	pi = 3.14159265359	
+	
+	! Gets the radius from the user and assigns to 'r'
+	WRITE (*,*) 'What is the radius?'
+	READ (*,*) r
+	
+	! Opens the file 'assign_7_2.out' in unit number 99
+	OPEN (99,FILE='assign_7_2.out')
+	
+	! Writes the various calculated quantities in the functions
+	WRITE (99,*) 'Circle area : ', circ_area(r)
+	WRITE (99,*) 'Perimeter of circle : ', circ_perim(r)
+	WRITE (99,*) 'Surface area of sphere : ', sphere_area(r)
+	WRITE (99,*) 'Volume of sphere : ', sphere_volume(r)
+	WRITE (99,*) 'Area of sphere - area of circle : ',&
+				&(sphere_area(r) - circ_area(r))
+	WRITE (99,*) 'Volume of sphere * perimeter of circle',&
+				&(sphere_volume(r) * circ_perim(r))
+	! Closes the file
+	CLOSE (99)
+		
+END PROGRAM assign_7_2
+
+----------------------------ASSIGN_7_2_SUB-------------------------------
+
+!************************************************************************
+!Author: Navrit Bal
+!Student Number: 12958319
+!Creation Date: 21/02/2013
+!Assignment Number: 7_2
+!Purpose:  Provide functions for another program which takes a parameter 
+!			and performs various calculations with it and returns them
+!************************************************************************
+
+REAL FUNCTION circ_area(k)
+	IMPLICIT NONE
+	! Takes 'r' from the main program as 'k' - same for the other functions
+	REAL, INTENT(IN) :: k
+	! Calculates the area of a circle based on the radius given
+	circ_area = ( pi * (k**2) )
+END FUNCTION circ_area
+
+REAL FUNCTION circ_perim(k)
+	IMPLICIT NONE
+	REAL, INTENT(IN) :: k
+	! Calculates the perimeter of a circle based on the radius given
+	circ_perim = (2 * pi * k)
+END FUNCTION circ_perim
+
+REAL FUNCTION sphere_area(k)
+	IMPLICIT NONE
+	REAL, INTENT(IN) :: k
+	! Calculates the surface area of a sphere based on the radius given
+	sphere_area = (4 * pi * (k**2) )
+END FUNCTION sphere_area
+
+REAL FUNCTION sphere_volume(k)
+	IMPLICIT NONE
+	REAL, INTENT(IN) :: k
+	! Calculates the volume of a sphere based on the radius given
+	sphere_volume = ((4.0/3.0) * pi * (k**3) )
+END FUNCTION sphere_volume
+
+
+
+----------------------------ASSIGN_7_2.OUT-------------------------------
+
+ Circle area :    7.068583    
+ Perimeter of circle :    9.424778    
+ Surface area of sphere :    28.27433    
+ Volume of sphere :    14.13717    
+ Area of sphere - area of circle :    21.20575    
+ Volume of sphere * perimeter of circle   133.2397    
+
+
+----------------------------END OF WEEK QUESTIONS------------------------
+
+	1. INTENT(OUT)
+	   eg. {variable type},INTENT(OUT) :: {variable name}
+	2. Functions have a return type, they must return a variable of a 
+		pre-defined type. Sub-routines are called by using the CALL 
+		command, functions are referred to by just their name
+	   eg. CALL {subroutine(...parameters...)}
+		   or
+		   {function(...parameters...)}
+	3. Using functions and sub-routines can reduce the repetitiveness
+		of the program by re-using code. They can also greatly simplify
+		understanding and the readability of the program to programmers,
+		which can also help with debugging.
