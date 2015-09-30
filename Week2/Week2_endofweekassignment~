@@ -1,0 +1,6 @@
+1. End of file (EOF) condition occurs
+2. Integer
+3. 5 and 6 for stdin and stdout
+4. a) All positive integer values, month between 1 and 12, days between 1 and 31 depending on the month and finally the year could be any integer - positive or negative
+   b) Will be a  string of characters, at least 1 character
+   c) Must be more than 0 and a real number

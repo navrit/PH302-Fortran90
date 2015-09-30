@@ -1,0 +1,10 @@
+1. 	a) 23
+	b) 11
+	c) 6*8 = 48
+	d) 101*41*257 = 1,064,237
+2.	To represent objects in a simulation 
+	which has a 3 dimensional coordinate
+	system, for example a 3D astronomical map.
+	This would be necessary in order to 
+	reference to any point in space and to 
+	map points to particular coordinates.

@@ -1,0 +1,49 @@
+!************************************************************************
+!Author:Navrit Bal
+!Student Number:12958319
+!Creation Date:22/01/2013
+!Assignment Number:2_2
+!Purpose:
+!************************************************************************
+
+PROGRAM assign_2_2
+  
+  IMPLICIT NONE
+  
+  !a,b,c are variables and are initialised here
+  !discrim will store the answer
+
+  REAL :: a,b,c,discrim,x_plus,x_neg
+  
+  a = 0 !!Initial conditions
+  b = 0
+  c = 0
+
+  OPEN(99,FILE='assign_2_2.out')
+
+  WRITE(*,*) 'a = what??'
+  READ(*,*) a
+  WRITE(*,*) 'b = what??'
+  READ(*,*) b
+  WRITE(*,*) 'c = what??'
+  READ(*,*) c
+
+  discrim = b**2 - 4*a*c !To calculate the discriminant
+
+
+  x_plus = (-b + SQRT(discrim))/(2*a) !Calculates the positive x solution to the quadratic equation
+  x_neg = (-b - SQRT(discrim))/(2*a) !Calculates the negative x solution to the quadratic equation
+
+
+  WRITE (99,*) "Here are the coefficients of the quadratic equation"
+  WRITE (99,*) "a = ",a
+  WRITE (99,*) "b = ",b
+  WRITE (99,*) "c = ",c
+
+  WRITE (99,*) "Here is the postive x value dude : ",x_plus !
+  WRITE (99,*) "Here is the negative x value dude : ",x_neg !
+
+
+  CLOSE(99)
+
+END PROGRAM 
